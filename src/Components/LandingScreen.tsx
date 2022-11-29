@@ -1,5 +1,7 @@
+import { ScreenWrapper } from "./Styles/Shared.styles"
+
 export const LandingScreen = () => {
     return (
-        <>Landing Screen</>
+        <ScreenWrapper>Landing Screen</ScreenWrapper>
         )
 }

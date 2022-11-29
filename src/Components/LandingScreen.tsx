@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { ScreenWrapper } from "./Styles/Shared.styles";
+import { ClearWrapper } from "./Styles/Shared.styles";
 import { Button, TextField } from "@mui/material";
 import { Context } from "./../ContextProvider";
 
@@ -20,8 +20,7 @@ export const LandingScreen = () => {
   };
 
   return (
-    <ScreenWrapper>
-      <main style={{ paddingBottom: "5em" }}>
+      <ClearWrapper>
         <h1>WordCloud Game</h1>
         <TextField
           type="text"
@@ -31,12 +30,11 @@ export const LandingScreen = () => {
         <br />
         <Button
           variant="contained"
-          sx={{ margin: "2em" }}
           onClick={handlePlay}
         >
           Play
         </Button>
-      </main>
-    </ScreenWrapper>
+      </ClearWrapper>
+
   );
 };

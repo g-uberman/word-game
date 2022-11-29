@@ -1,10 +1,12 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { ScreenWrapper } from "./Styles/Shared.styles";
 import { Button, TextField } from "@mui/material";
 import { Context } from "./../ContextProvider";
 
 export const LandingScreen = () => {
   const { username, setUsername } = useContext(Context);
+  const navigate = useNavigate();
 
   const handleUsername = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -12,7 +14,10 @@ export const LandingScreen = () => {
         setUsername(e.target.value);
       };
 
-  const handlePlay = () => {};
+  const handlePlay = () => {
+    console.log(username);
+    navigate("/game");
+  };
 
   return (
     <ScreenWrapper>
@@ -27,7 +32,7 @@ export const LandingScreen = () => {
         <Button
           variant="contained"
           sx={{ margin: "2em" }}
-          onChange={handlePlay}
+          onClick={handlePlay}
         >
           Play
         </Button>

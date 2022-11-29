@@ -8,4 +8,7 @@ export const ScreenWrapper = styled.div`
     align-self: center;
     text-align: center;
     padding: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `

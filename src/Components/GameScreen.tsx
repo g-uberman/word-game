@@ -21,7 +21,7 @@ export const GameScreen = () => {
   return (
     <>
       <h1>Select animals</h1>
-      <ScreenWrapper>{username}</ScreenWrapper>
+      <ScreenWrapper></ScreenWrapper>
       {!gameover &&
       (<Button
         variant="contained"

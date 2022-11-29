@@ -15,7 +15,6 @@ export const LandingScreen = () => {
       };
 
   const handlePlay = () => {
-    console.log(username);
     navigate("/game");
   };
 

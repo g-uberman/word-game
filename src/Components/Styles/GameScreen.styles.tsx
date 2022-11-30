@@ -20,4 +20,8 @@ export const StyledWord = styled.div`
     cursor: pointer;
     font-weight: 500;
     font-size: 2em;
+    
+    .selected {
+        color: green;
+    }
 `

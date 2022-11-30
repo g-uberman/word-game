@@ -13,6 +13,8 @@ export const GameScreen = () => {
     good_words: [],
   })
   const [gameover, setGameover] = useState(false);
+  const [selectedWords, setSelectedWords] = useState<string[]>([]);
+  const [className, setClassName] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,6 +31,12 @@ export const GameScreen = () => {
 
   const handleFinish = () => {
     navigate("/result");
+  };
+
+  const handleWordClick = (element: string) => {
+    className ? setClassName("") : setClassName("selected");
+    setSelectedWords([...selectedWords, element])
+    console.log(selectedWords);
   };
 
   // RANDOMISER:
@@ -59,7 +67,11 @@ export const GameScreen = () => {
       <ScreenWrapper>
 
       {chosenSet.all_words.map((element, index) => (
-                <StyledWord key={index} className="word">
+                <StyledWord
+                key={index}
+                className={className}
+                onClick={() => handleWordClick(element)}
+                >
                   {element}
                 </StyledWord>
       ))}

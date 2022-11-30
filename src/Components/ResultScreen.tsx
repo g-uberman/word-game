@@ -1,17 +1,15 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { WhiteWrapper } from "./Styles/Shared.styles";
 import { Button } from "@mui/material";
 import { Context } from "./../ContextProvider";
 
 export const ResultScreen = () => {
-  const { username, setUsername, points, setPoints } = useContext(Context);
-  const navigate = useNavigate();
+  const { username, setUsername, points, setPoints, setView } = useContext(Context);
 
   const handleRestart = () => {
     setUsername("");
     setPoints(0);
-    navigate("/");
+    setView("landing");
   };
 
   return (

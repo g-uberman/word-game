@@ -1,5 +1,4 @@
-import { useContext, useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useState, useEffect } from "react";
 import { ScreenWrapper } from "./Styles/GameScreen.styles";
 import { WhiteWrapper } from "./Styles/Shared.styles";
 import { Button } from "@mui/material";
@@ -7,7 +6,7 @@ import { Context } from "./../ContextProvider";
 import { WordSet, animals, colors, vehicles } from "../data";
 
 export const GameScreen = () => {
-  const { setPoints } = useContext(Context);
+  const { setPoints, setView } = useContext(Context);
   const [chosenSet, setChosenSet] = useState<WordSet>({
     question: "",
     all_words: [],
@@ -15,7 +14,6 @@ export const GameScreen = () => {
   });
   const [gameover, setGameover] = useState(false);
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     chooseSet();
@@ -63,7 +61,7 @@ export const GameScreen = () => {
   };
 
   const handleFinish = () => {
-    navigate("/result");
+    setView("result");
   };
 
   const handleWordClick = (element: string) => {

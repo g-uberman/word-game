@@ -28,6 +28,8 @@ export const ScreenWrapper = styled.div`
     font-weight: 500;
     font-size: 2em;
     color: #c8c8c8;
+    padding: 5px 20px;
+    position: relative;
   }
 
   input[type="checkbox"]:checked + label {
@@ -38,11 +40,23 @@ export const ScreenWrapper = styled.div`
     display: none;
   }
 
-  input[type="checkbox"] + label.correct {
-    color: limegreen;
+  label.correct::after {
+    content: "correct";
+    position: absolute;
+    top: -0.5em;
+    right: 0;
+    left: 0;
+    font-size: 0.7em;
+    color: #32cd32;
   }
 
-  input[type="checkbox"] + label.incorrect {
-    color: red;
+  label.incorrect::after {
+    content: "incorrect";
+    position: absolute;
+    top: -0.5em;
+    right: 0;
+    left: 0;
+    font-size: 0.7em;
+    color: #e01e1e;
   }
 `;

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import background from "../../images/image-from-rawpixel-id-2581311-png.png"
+import background from "../../images/image-from-rawpixel-id-2581311-png.png";
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -10,19 +10,21 @@ export const GlobalStyle = createGlobalStyle`
 
 /* BACKGROUND */
 
-body {
-    background: url(${background});
-    animation: animateBG 60s infinite linear;
-}
+@media screen and (min-width: 800px) {
+    body {
+        background: url(${background});
+        animation: animateBG 60s infinite linear;
+    }
 
-@keyframes animateBG {
-    from {
-      background-position-y: 0px;
+    @keyframes animateBG {
+        from {
+        background-position-y: 0px;
+        }
+        to {
+        background-position-y: 1667px;
+        }
     }
-    to {
-      background-position-y: 1667px;
-    }
-  }
+}
 
 /* FONTS */
 h1 {
@@ -33,4 +35,4 @@ h1 {
 .title {
     font-size: 3em;
 }
-`
+`;

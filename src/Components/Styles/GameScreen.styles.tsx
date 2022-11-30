@@ -26,7 +26,6 @@ export const ScreenWrapper = styled.div`
     cursor: pointer;
     font-weight: 500;
     font-size: 1.7em;
-    line-height: 2.5em;
     color: #c8c8c8;
     padding: 5px 20px;
     position: relative;
@@ -39,7 +38,7 @@ export const ScreenWrapper = styled.div`
   .correct::after {
     content: "correct";
     position: absolute;
-    top: -1.7em;
+    top: -0.7em;
     right: 0;
     left: 0;
     font-size: 0.7em;
@@ -49,14 +48,14 @@ export const ScreenWrapper = styled.div`
   .incorrect::after {
     content: "incorrect";
     position: absolute;
-    top: -1.7em;
+    top: -0.7em;
     right: 0;
     left: 0;
     font-size: 0.7em;
     color: #e01e1e;
   }
 
-  @media screen and (min-width: 700px) {
+  @media screen and (min-width: 800px) {
     padding: 3em;
   }
 `;

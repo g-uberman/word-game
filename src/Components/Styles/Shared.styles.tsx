@@ -3,10 +3,9 @@ import styled from "styled-components";
 export const WhiteWrapper = styled.div`
     width: 95%;
     max-width: 800px;
-    min-height: 800px;
     align-self: center;
     text-align: center;
-    padding: 3em;
+    padding: 0.5em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,4 +14,9 @@ export const WhiteWrapper = styled.div`
     border-radius: 20px;
     border: 1px solid #eee;
     box-shadow: 0 10px 10px #00000011;
+
+    @media screen and (min-width: 800px) {
+    padding: 3em;
+    min-height: 800px;
+  }
 `

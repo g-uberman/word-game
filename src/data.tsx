@@ -20,7 +20,7 @@ export const animals: WordSet = {
     "passenger",
     "cow",
   ],
-  good_words: ["tiger", "cow"],
+  good_words: ["tiger", "cow", "cub"],
 };
 
 export const colors: WordSet = {

@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ScreenWrapper } from "./Styles/GameScreen.styles";
 import { Button } from "@mui/material";
@@ -6,6 +6,8 @@ import { Context } from "./../ContextProvider";
 import { WordSet, animals, colors, vehicles } from "../data";
 
 export const GameScreen = () => {
+  // const wordRef = useRef(null);
+
   const { points, setPoints } = useContext(Context);
   const [chosenSet, setChosenSet] = useState<WordSet>({
     question: "",
@@ -23,28 +25,37 @@ export const GameScreen = () => {
   // CHECK RESULT
 
   const checkResult = () => {
-    let currentSum = 0
+    let currentSum = 0;
     console.log("running check result");
     // check selected for correct & incorrect
     selectedWords.forEach((word) => {
       if (chosenSet.good_words.includes(word)) {
         currentSum += 2;
-        console.log("word selected correctly, +2 points");
+        markCorrect(word);
       } else {
         currentSum -= 1;
-        console.log("word selected incorrectly, -1 point");
+        markIncorrect(word);
       }
     });
     // check correct for unselected
     chosenSet.good_words.forEach((word) => {
       if (!selectedWords.includes(word)) {
         currentSum -= 1;
-        console.log("word unselected, -1 point");
+        markIncorrect(word);
       }
     });
     setPoints(currentSum);
-    console.log(points);
   };
+
+  const markCorrect = (word: string) => {
+    let i = chosenSet.all_words.indexOf(word)
+    document.getElementById(`label${i}`)?.classList.add("correct")
+  }
+
+  const markIncorrect = (word: string) => {
+    let i = chosenSet.all_words.indexOf(word)
+    document.getElementById(`label${i}`)?.classList.add("incorrect")
+  }
 
   // BUTTON EFFECTS:
 
@@ -95,14 +106,16 @@ export const GameScreen = () => {
       <h1>{chosenSet.question}:</h1>
       <ScreenWrapper>
         {chosenSet.all_words.map((element, index) => (
-          <div key={index}>
+          <div key={index} className="correct">
             <input
               type="checkbox"
               name={index.toString()}
               id={index.toString()}
               onChange={() => handleWordClick(element)}
             />
-            <label htmlFor={index.toString()}>{element}</label>
+            <label htmlFor={index.toString()} id={"label" + index.toString()}>
+              {element}
+            </label>
           </div>
         ))}
       </ScreenWrapper>

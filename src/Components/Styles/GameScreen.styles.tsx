@@ -37,4 +37,12 @@ export const ScreenWrapper = styled.div`
   input[type="checkbox"] {
     display: none;
   }
+
+  input[type="checkbox"] + label.correct {
+    color: limegreen;
+  }
+
+  input[type="checkbox"] + label.incorrect {
+    color: red;
+  }
 `;

@@ -1,18 +1,23 @@
 import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ScreenWrapper } from "./Styles/Shared.styles";
+import { ScreenWrapper, StyledWord } from "./Styles/GameScreen.styles";
 import { Button } from "@mui/material";
 import { Context } from "./../ContextProvider";
 import { WordSet, animals, colors, vehicles } from "../data";
 
 export const GameScreen = () => {
   const { setPoints } = useContext(Context);
-  const [ question, setQuestion ] = useState("");
+  const [chosenSet, setChosenSet] = useState<WordSet>({
+    question: "",
+    all_words: [],
+    good_words: [],
+  })
   const [gameover, setGameover] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     chooseSet();
+    console.log(chosenSet);
   }, []);
 
   // BUTTON EFFECTS:
@@ -28,37 +33,38 @@ export const GameScreen = () => {
 
   // RANDOMISER:
 
-  let chosenSet: WordSet = {
-    question: "",
-    all_words: [],
-    good_words: []
-  };
-
   const chooseSet = () => {
     const choice = Math.ceil(Math.random() * 3);
     switch (choice) {
       case 1:
-        chosenSet = animals;
+        setChosenSet(animals);
         break;
       case 2:
-        chosenSet = colors;
+        setChosenSet(colors);
         break;
       case 3:
-        chosenSet = vehicles;
+        setChosenSet(vehicles);
         break;
       default:
-        chosenSet = animals;
+        setChosenSet(animals);
         break;
     }
-    setQuestion(chosenSet.question);
   };
 
-  // COMPONENT
+  // COMPONENT:
 
   return (
     <>
-      <h1>{question}:</h1>
-      <ScreenWrapper></ScreenWrapper>
+      <h1>{chosenSet.question}:</h1>
+      <ScreenWrapper>
+
+      {chosenSet.all_words.map((element, index) => (
+                <StyledWord key={index} className="word">
+                  {element}
+                </StyledWord>
+      ))}
+
+      </ScreenWrapper>
       {!gameover && (
         <Button
           variant="contained"

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { ClearWrapper } from "./Styles/Shared.styles";
-import { Button, TextField } from "@mui/material";
+import { WhiteWrapper } from "./Styles/Shared.styles";
+import { Button } from "@mui/material";
 import { Context } from "./../ContextProvider";
 
 export const ResultScreen = () => {
@@ -15,7 +15,7 @@ export const ResultScreen = () => {
   };
 
   return (
-    <ClearWrapper>
+    <WhiteWrapper>
       {username && <h1>Congratulations, {username}!</h1>}
       {!username && <h1>Congratulations!</h1>}
       <h1>
@@ -24,9 +24,14 @@ export const ResultScreen = () => {
         {points} points
       </h1>
       <br />
-      <Button variant="contained" onClick={handleRestart} sx={{marginBottom: "2.5em"}} size="large">
+      <Button
+        variant="contained"
+        onClick={handleRestart}
+        sx={{ marginBottom: "2.5em" }}
+        size="large"
+      >
         Play again
       </Button>
-    </ClearWrapper>
+    </WhiteWrapper>
   );
 };

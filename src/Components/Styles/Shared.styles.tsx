@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ClearWrapper = styled.div`
+export const WhiteWrapper = styled.div`
     width: 95%;
     max-width: 800px;
     min-height: 800px;

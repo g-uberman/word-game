@@ -1,15 +1,13 @@
 import { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ScreenWrapper } from "./Styles/GameScreen.styles";
-import { ClearWrapper } from "./Styles/Shared.styles";
+import { WhiteWrapper } from "./Styles/Shared.styles";
 import { Button } from "@mui/material";
 import { Context } from "./../ContextProvider";
 import { WordSet, animals, colors, vehicles } from "../data";
 
 export const GameScreen = () => {
-  // const wordRef = useRef(null);
-
-  const { points, setPoints } = useContext(Context);
+  const { setPoints } = useContext(Context);
   const [chosenSet, setChosenSet] = useState<WordSet>({
     question: "",
     all_words: [],
@@ -27,7 +25,7 @@ export const GameScreen = () => {
 
   const checkResult = () => {
     let currentSum = 0;
-    // check selected for correct & incorrect
+    // check selected for correct & incorrect answers
     selectedWords.forEach((word) => {
       if (chosenSet.good_words.includes(word)) {
         currentSum += 2;
@@ -37,7 +35,7 @@ export const GameScreen = () => {
         markIncorrect(word);
       }
     });
-    // check correct for unselected
+    // check for correct answers that were not selected
     chosenSet.good_words.forEach((word) => {
       if (!selectedWords.includes(word)) {
         currentSum -= 1;
@@ -72,11 +70,11 @@ export const GameScreen = () => {
     if (gameover) {
       return null;
     }
-    // add item
+    // add item to selected list
     if (!selectedWords.includes(element)) {
       setSelectedWords([...selectedWords, element]);
     } else {
-      //remove item
+      //remove item from selected list
       setSelectedWords(selectedWords.filter((item) => item !== element));
     }
   };
@@ -84,9 +82,9 @@ export const GameScreen = () => {
   // RANDOMISER:
 
   const chooseSet = () => {
-
     function shuffle(set: WordSet) {
-      let currentIndex = set.all_words.length,  randomIndex;
+      let currentIndex = set.all_words.length,
+        randomIndex;
       // While there remain elements to shuffle.
       while (currentIndex != 0) {
         // Pick a remaining element.
@@ -94,7 +92,9 @@ export const GameScreen = () => {
         currentIndex--;
         // And swap it with the current element.
         [set.all_words[currentIndex], set.all_words[randomIndex]] = [
-          set.all_words[randomIndex], set.all_words[currentIndex]];
+          set.all_words[randomIndex],
+          set.all_words[currentIndex],
+        ];
       }
       return set;
     }
@@ -119,7 +119,7 @@ export const GameScreen = () => {
   // COMPONENT:
 
   return (
-    <ClearWrapper>
+    <WhiteWrapper>
       <h1>{chosenSet.question}:</h1>
       <ScreenWrapper>
         {chosenSet.all_words.map((element, index) => (
@@ -158,6 +158,6 @@ export const GameScreen = () => {
           Finish game
         </Button>
       )}
-    </ClearWrapper>
+    </WhiteWrapper>
   );
 };

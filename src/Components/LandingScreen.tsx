@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { ClearWrapper } from "./Styles/Shared.styles";
+import { WhiteWrapper } from "./Styles/Shared.styles";
 import { Button, TextField } from "@mui/material";
 import { Context } from "./../ContextProvider";
 
 export const LandingScreen = () => {
-  const { username, setUsername } = useContext(Context);
+  const { setUsername } = useContext(Context);
   const navigate = useNavigate();
 
   const handleUsername = (
@@ -25,19 +25,24 @@ export const LandingScreen = () => {
   };
 
   return (
-    <ClearWrapper>
+    <WhiteWrapper>
       <h1 className="title">WordCloud</h1>
       <TextField
         type="text"
         placeholder="Player name"
         onChange={(e) => handleUsername(e)}
         onKeyDown={(e) => handleEnter(e)}
-        sx={{margin: "0.7em"}}
+        sx={{ margin: "0.7em" }}
       />
       <br />
-      <Button variant="contained" onClick={handlePlay} sx={{marginBottom: "2.5em"}} size="large">
+      <Button
+        variant="contained"
+        onClick={handlePlay}
+        sx={{ marginBottom: "2.5em" }}
+        size="large"
+      >
         Play
       </Button>
-    </ClearWrapper>
+    </WhiteWrapper>
   );
 };

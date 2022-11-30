@@ -1,5 +1,3 @@
-import React from "react";
-import "./App.css";
 import { LandingScreen } from "./Components/LandingScreen";
 import { GameScreen } from "./Components/GameScreen";
 import { ResultScreen } from "./Components/ResultScreen";

@@ -83,19 +83,34 @@ export const GameScreen = () => {
   // RANDOMISER:
 
   const chooseSet = () => {
+
+    function shuffle(set: WordSet) {
+      let currentIndex = set.all_words.length,  randomIndex;
+      // While there remain elements to shuffle.
+      while (currentIndex != 0) {
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        // And swap it with the current element.
+        [set.all_words[currentIndex], set.all_words[randomIndex]] = [
+          set.all_words[randomIndex], set.all_words[currentIndex]];
+      }
+      return set;
+    }
+    
     const choice = Math.ceil(Math.random() * 3);
     switch (choice) {
       case 1:
-        setChosenSet(animals);
+        setChosenSet(shuffle(animals));
         break;
       case 2:
-        setChosenSet(colors);
+        setChosenSet(shuffle(colors));
         break;
       case 3:
-        setChosenSet(vehicles);
+        setChosenSet(shuffle(vehicles));
         break;
       default:
-        setChosenSet(animals);
+        setChosenSet(shuffle(animals));
         break;
     }
   };

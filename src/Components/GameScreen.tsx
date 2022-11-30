@@ -32,7 +32,13 @@ export const GameScreen = () => {
   };
 
   const handleWordClick = (element: string) => {
-    setSelectedWords([...selectedWords, element]);
+    // add item
+    if (!selectedWords.includes(element)) {
+      setSelectedWords([...selectedWords, element]);
+    } else {
+      //remove item
+      setSelectedWords(selectedWords.filter(item => item !== element))
+    }
     console.log(selectedWords);
   };
 

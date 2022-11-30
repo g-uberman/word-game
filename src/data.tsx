@@ -1,11 +1,11 @@
-interface Questions {
+export interface WordSet {
   question: string;
   all_words: string[];
   good_words: string[];
 }
 
-export const animals: Questions = {
-  question: "select animals",
+export const animals: WordSet = {
+  question: "Select animals",
   all_words: [
     "hole",
     "sofa",
@@ -23,8 +23,8 @@ export const animals: Questions = {
   good_words: ["tiger", "cow"],
 };
 
-export const colors: Questions = {
-  question: "select colors",
+export const colors: WordSet = {
+  question: "Select colors",
   all_words: [
     "jeans",
     "existence",
@@ -42,8 +42,8 @@ export const colors: Questions = {
   good_words: ["red", "blue", "yellow", "white", "black"],
 };
 
-export const vehicles: Questions = {
-  question: "select vehicles",
+export const vehicles: WordSet = {
+  question: "Select vehicles",
   all_words: [
     "belief",
     "wire",

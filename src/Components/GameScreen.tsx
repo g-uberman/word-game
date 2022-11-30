@@ -1,13 +1,21 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ScreenWrapper } from "./Styles/Shared.styles";
-import { Button, TextField } from "@mui/material";
+import { Button } from "@mui/material";
 import { Context } from "./../ContextProvider";
+import { WordSet, animals, colors, vehicles } from "../data";
 
 export const GameScreen = () => {
-  const { username, setPoints } = useContext(Context);
+  const { setPoints } = useContext(Context);
+  const [ question, setQuestion ] = useState("");
   const [gameover, setGameover] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    chooseSet();
+  }, []);
+
+  // BUTTON EFFECTS:
 
   const handleCheck = () => {
     setGameover(true);
@@ -18,26 +26,57 @@ export const GameScreen = () => {
     navigate("/result");
   };
 
+  // RANDOMISER:
+
+  let chosenSet: WordSet = {
+    question: "",
+    all_words: [],
+    good_words: []
+  };
+
+  const chooseSet = () => {
+    const choice = Math.ceil(Math.random() * 3);
+    switch (choice) {
+      case 1:
+        chosenSet = animals;
+        break;
+      case 2:
+        chosenSet = colors;
+        break;
+      case 3:
+        chosenSet = vehicles;
+        break;
+      default:
+        chosenSet = animals;
+        break;
+    }
+    setQuestion(chosenSet.question);
+  };
+
+  // COMPONENT
+
   return (
     <>
-      <h1>Select animals</h1>
+      <h1>{question}:</h1>
       <ScreenWrapper></ScreenWrapper>
-      {!gameover &&
-      (<Button
-        variant="contained"
-        sx={{ margin: "24.65px" }}
-        onClick={handleCheck}
-      >
-        Check answers
-      </Button>)}
-      {gameover &&
-      (<Button
-        variant="contained"
-        sx={{ margin: "24.65px" }}
-        onClick={handleFinish}
-      >
-        Finish game
-      </Button>)}
+      {!gameover && (
+        <Button
+          variant="contained"
+          sx={{ margin: "24.65px" }}
+          onClick={handleCheck}
+        >
+          Check answers
+        </Button>
+      )}
+      {gameover && (
+        <Button
+          variant="contained"
+          sx={{ margin: "24.65px" }}
+          onClick={handleFinish}
+        >
+          Finish game
+        </Button>
+      )}
     </>
   );
 };

@@ -26,7 +26,6 @@ export const GameScreen = () => {
 
   const checkResult = () => {
     let currentSum = 0;
-    console.log("running check result");
     // check selected for correct & incorrect
     selectedWords.forEach((word) => {
       if (chosenSet.good_words.includes(word)) {
@@ -48,14 +47,14 @@ export const GameScreen = () => {
   };
 
   const markCorrect = (word: string) => {
-    let i = chosenSet.all_words.indexOf(word)
-    document.getElementById(`label${i}`)?.classList.add("correct")
-  }
+    let i = chosenSet.all_words.indexOf(word);
+    document.getElementById(`label${i}`)?.classList.add("correct");
+  };
 
   const markIncorrect = (word: string) => {
-    let i = chosenSet.all_words.indexOf(word)
-    document.getElementById(`label${i}`)?.classList.add("incorrect")
-  }
+    let i = chosenSet.all_words.indexOf(word);
+    document.getElementById(`label${i}`)?.classList.add("incorrect");
+  };
 
   // BUTTON EFFECTS:
 
@@ -69,6 +68,9 @@ export const GameScreen = () => {
   };
 
   const handleWordClick = (element: string) => {
+    if (gameover) {
+      return null;
+    }
     // add item
     if (!selectedWords.includes(element)) {
       setSelectedWords([...selectedWords, element]);
@@ -76,7 +78,6 @@ export const GameScreen = () => {
       //remove item
       setSelectedWords(selectedWords.filter((item) => item !== element));
     }
-    console.log(selectedWords);
   };
 
   // RANDOMISER:
@@ -112,6 +113,7 @@ export const GameScreen = () => {
               name={index.toString()}
               id={index.toString()}
               onChange={() => handleWordClick(element)}
+              disabled={gameover}
             />
             <label htmlFor={index.toString()} id={"label" + index.toString()}>
               {element}

@@ -107,7 +107,7 @@ export const GameScreen = () => {
       <h1>{chosenSet.question}:</h1>
       <ScreenWrapper>
         {chosenSet.all_words.map((element, index) => (
-          <div key={index} className="correct">
+          <div key={index}>
             <input
               type="checkbox"
               name={index.toString()}

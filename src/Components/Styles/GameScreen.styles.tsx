@@ -1,59 +1,53 @@
 import styled from "styled-components";
 
-export const StyledWord = styled.input`
-  /* display: inline-block; */
-  margin: 1em;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 2em;
-  type: "checkbox";
-`;
-
 export const ScreenWrapper = styled.div`
-  height: 600px;
   width: 95%;
   max-width: 600px;
+  min-height: 600px;
+  padding: 1em;
+  margin: 1em;
   border: 1px solid black;
   align-self: center;
   text-align: center;
-  padding: 3em;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  border-radius: 20px;
 
-  input[type="checkbox"] + label {
-    margin: 1em;
+  input {
+    display: none;
+  }
+
+  label {
+    margin: 0.5em;
     cursor: pointer;
     font-weight: 500;
     font-size: 2em;
+    line-height: 2.5em;
     color: #c8c8c8;
     padding: 5px 20px;
     position: relative;
   }
 
-  input[type="checkbox"]:checked + label {
+  input:checked + label {
     color: #000;
   }
 
-  input[type="checkbox"] {
-    display: none;
-  }
-
-  label.correct::after {
+  .correct::after {
     content: "correct";
     position: absolute;
-    top: -0.5em;
+    top: -1.7em;
     right: 0;
     left: 0;
     font-size: 0.7em;
     color: #32cd32;
   }
 
-  label.incorrect::after {
+  .incorrect::after {
     content: "incorrect";
     position: absolute;
-    top: -0.5em;
+    top: -1.7em;
     right: 0;
     left: 0;
     font-size: 0.7em;

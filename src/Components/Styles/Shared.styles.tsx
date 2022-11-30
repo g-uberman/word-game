@@ -11,12 +11,12 @@ export const WhiteWrapper = styled.div`
     justify-content: center;
     align-items: center;
     background: #fff;
-    border-radius: 20px;
-    border: 1px solid #eee;
-    box-shadow: 0 10px 10px #00000011;
 
     @media screen and (min-width: 800px) {
     padding: 3em;
     min-height: 800px;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    box-shadow: 0 10px 10px #00000011;
   }
 `

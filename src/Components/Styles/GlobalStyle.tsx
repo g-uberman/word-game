@@ -33,6 +33,12 @@ h1 {
 }
 
 .title {
-    font-size: 3em;
+    font-size: 2em;
+    margin-bottom: 0;
+}
+
+.subtitle {
+    text-decoration: none;
+    margin-bottom: 1em;
 }
 `;

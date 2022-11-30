@@ -27,12 +27,13 @@ export const LandingScreen = () => {
   return (
     <WhiteWrapper>
       <h1 className="title">WordCloud</h1>
+      <a className="subtitle" href="https://github.com/g-uberman" target="blank">by Grzegorz Uberman</a>
       <TextField
         type="text"
         placeholder="Player name"
         onChange={(e) => handleUsername(e)}
         onKeyDown={(e) => handleEnter(e)}
-        sx={{ margin: "0.7em" }}
+        sx={{ margin: "1em" }}
       />
       <br />
       <Button

@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const ScreenWrapper = styled.div`
   width: 95%;
-  max-width: 600px;
-  min-height: 600px;
+  max-width: 500px;
+  min-height: 500px;
   padding: 1em;
   margin: 1em;
   border: 1px solid black;
@@ -13,7 +13,9 @@ export const ScreenWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  background: #fff;
   border-radius: 20px;
+  border: 2px solid #000;
 
   input {
     display: none;
@@ -23,7 +25,7 @@ export const ScreenWrapper = styled.div`
     margin: 0.5em;
     cursor: pointer;
     font-weight: 500;
-    font-size: 2em;
+    font-size: 1.7em;
     line-height: 2.5em;
     color: #c8c8c8;
     padding: 5px 20px;
@@ -52,5 +54,9 @@ export const ScreenWrapper = styled.div`
     left: 0;
     font-size: 0.7em;
     color: #e01e1e;
+  }
+
+  @media screen and (min-width: 700px) {
+    padding: 3em;
   }
 `;

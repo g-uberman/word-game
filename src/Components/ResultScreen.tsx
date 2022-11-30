@@ -24,7 +24,7 @@ export const ResultScreen = () => {
         {points} points
       </h1>
       <br />
-      <Button variant="contained" onClick={handleRestart}>
+      <Button variant="contained" onClick={handleRestart} sx={{marginBottom: "2.5em"}} size="large">
         Play again
       </Button>
     </ClearWrapper>

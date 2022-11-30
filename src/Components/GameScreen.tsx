@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ScreenWrapper } from "./Styles/GameScreen.styles";
+import { ClearWrapper } from "./Styles/Shared.styles";
 import { Button } from "@mui/material";
 import { Context } from "./../ContextProvider";
 import { WordSet, animals, colors, vehicles } from "../data";
@@ -97,7 +98,7 @@ export const GameScreen = () => {
       }
       return set;
     }
-    
+
     const choice = Math.ceil(Math.random() * 3);
     switch (choice) {
       case 1:
@@ -118,7 +119,7 @@ export const GameScreen = () => {
   // COMPONENT:
 
   return (
-    <>
+    <ClearWrapper>
       <h1>{chosenSet.question}:</h1>
       <ScreenWrapper>
         {chosenSet.all_words.map((element, index) => (
@@ -141,6 +142,7 @@ export const GameScreen = () => {
           variant="contained"
           sx={{ margin: "24.65px" }}
           onClick={handleCheck}
+          size="large"
         >
           Check answers
         </Button>
@@ -150,10 +152,12 @@ export const GameScreen = () => {
           variant="contained"
           sx={{ margin: "24.65px" }}
           onClick={handleFinish}
+          size="large"
+          color="warning"
         >
           Finish game
         </Button>
       )}
-    </>
+    </ClearWrapper>
   );
 };

@@ -1,10 +1,9 @@
 import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ScreenWrapper, StyledWord } from "./Styles/GameScreen.styles";
-import { Button, Typography } from "@mui/material";
+import { ScreenWrapper } from "./Styles/GameScreen.styles";
+import { Button } from "@mui/material";
 import { Context } from "./../ContextProvider";
 import { WordSet, animals, colors, vehicles } from "../data";
-import { stringify } from "querystring";
 
 export const GameScreen = () => {
   const { setPoints } = useContext(Context);
@@ -15,13 +14,10 @@ export const GameScreen = () => {
   });
   const [gameover, setGameover] = useState(false);
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
-  const [inlineStyle, setInlineStyle] = useState({ color: "" });
-  const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     chooseSet();
-    console.log(chosenSet);
   }, []);
 
   // BUTTON EFFECTS:
@@ -36,8 +32,8 @@ export const GameScreen = () => {
   };
 
   const handleWordClick = (element: string) => {
-    // setSelectedWords([...selectedWords, element]);
-    // console.log(selectedWords);
+    setSelectedWords([...selectedWords, element]);
+    console.log(selectedWords);
   };
 
   // RANDOMISER:
@@ -72,6 +68,7 @@ export const GameScreen = () => {
               type="checkbox"
               name={index.toString()}
               id={index.toString()}
+              onChange={() => handleWordClick(element)}
             />
             <label htmlFor={index.toString()}>{element}</label>
           </div>

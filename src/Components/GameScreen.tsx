@@ -6,7 +6,7 @@ import { Context } from "./../ContextProvider";
 import { WordSet, animals, colors, vehicles } from "../data";
 
 export const GameScreen = () => {
-  const { setPoints } = useContext(Context);
+  const { points, setPoints } = useContext(Context);
   const [chosenSet, setChosenSet] = useState<WordSet>({
     question: "",
     all_words: [],
@@ -20,11 +20,37 @@ export const GameScreen = () => {
     chooseSet();
   }, []);
 
+  // CHECK RESULT
+
+  const checkResult = () => {
+    let currentSum = 0
+    console.log("running check result");
+    // check selected for correct & incorrect
+    selectedWords.forEach((word) => {
+      if (chosenSet.good_words.includes(word)) {
+        currentSum += 2;
+        console.log("word selected correctly, +2 points");
+      } else {
+        currentSum -= 1;
+        console.log("word selected incorrectly, -1 point");
+      }
+    });
+    // check correct for unselected
+    chosenSet.good_words.forEach((word) => {
+      if (!selectedWords.includes(word)) {
+        currentSum -= 1;
+        console.log("word unselected, -1 point");
+      }
+    });
+    setPoints(currentSum);
+    console.log(points);
+  };
+
   // BUTTON EFFECTS:
 
   const handleCheck = () => {
+    checkResult();
     setGameover(true);
-    setPoints(0);
   };
 
   const handleFinish = () => {
@@ -37,7 +63,7 @@ export const GameScreen = () => {
       setSelectedWords([...selectedWords, element]);
     } else {
       //remove item
-      setSelectedWords(selectedWords.filter(item => item !== element))
+      setSelectedWords(selectedWords.filter((item) => item !== element));
     }
     console.log(selectedWords);
   };

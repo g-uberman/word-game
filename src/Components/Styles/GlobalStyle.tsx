@@ -6,4 +6,10 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
 }
+
+/* FONTS */
+h1 {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
 `

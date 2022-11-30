@@ -19,11 +19,11 @@ export const ResultScreen = () => {
       {username && <h1>Congratulations, {username}!</h1>}
       {!username && <h1>Congratulations!</h1>}
       <h1>
-        <br />
         Your score:
         <br />
         {points} points
       </h1>
+      <br />
       <Button variant="contained" onClick={handleRestart}>
         Play again
       </Button>

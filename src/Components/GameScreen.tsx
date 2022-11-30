@@ -1,9 +1,10 @@
 import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ScreenWrapper, StyledWord } from "./Styles/GameScreen.styles";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { Context } from "./../ContextProvider";
 import { WordSet, animals, colors, vehicles } from "../data";
+import { stringify } from "querystring";
 
 export const GameScreen = () => {
   const { setPoints } = useContext(Context);
@@ -11,10 +12,11 @@ export const GameScreen = () => {
     question: "",
     all_words: [],
     good_words: [],
-  })
+  });
   const [gameover, setGameover] = useState(false);
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
-  const [className, setClassName] = useState("");
+  const [inlineStyle, setInlineStyle] = useState({ color: "" });
+  const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,9 +36,8 @@ export const GameScreen = () => {
   };
 
   const handleWordClick = (element: string) => {
-    className ? setClassName("") : setClassName("selected");
-    setSelectedWords([...selectedWords, element])
-    console.log(selectedWords);
+    // setSelectedWords([...selectedWords, element]);
+    // console.log(selectedWords);
   };
 
   // RANDOMISER:
@@ -65,17 +66,16 @@ export const GameScreen = () => {
     <>
       <h1>{chosenSet.question}:</h1>
       <ScreenWrapper>
-
-      {chosenSet.all_words.map((element, index) => (
-                <StyledWord
-                key={index}
-                className={className}
-                onClick={() => handleWordClick(element)}
-                >
-                  {element}
-                </StyledWord>
-      ))}
-
+        {chosenSet.all_words.map((element, index) => (
+          <div key={index}>
+            <input
+              type="checkbox"
+              name={index.toString()}
+              id={index.toString()}
+            />
+            <label htmlFor={index.toString()}>{element}</label>
+          </div>
+        ))}
       </ScreenWrapper>
       {!gameover && (
         <Button

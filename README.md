@@ -1,6 +1,8 @@
 # WordCloud
 ### English word game coded by g-uberman
 
+Deployed app is available at: [https://wordcloud-0f461b.netlify.app/](https://wordcloud-0f461b.netlify.app/)
+
 ### Technologies used:
 - React
 - TypeScript

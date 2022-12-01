@@ -17,6 +17,11 @@ export const GameField = styled.div`
   border-radius: 20px;
   border: 2px solid #000;
 
+  /* prevent text selection */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
   input {
     display: none;
   }

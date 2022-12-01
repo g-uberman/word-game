@@ -78,6 +78,12 @@ export const GameField = styled.div`
     color: #e35e4c;
   }
 
+  @media screen and (max-width: 350px) {
+    label {
+      line-height: 1.55em;
+    }
+  }
+
   @media screen and (min-width: 800px) {
     padding: 3em;
   }

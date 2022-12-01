@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { WhiteWrapper } from "./Styles/Shared.styles";
 import { Button, TextField } from "@mui/material";
 import { Context } from "./../ContextProvider";
 
@@ -23,7 +22,7 @@ export const LandingScreen = () => {
   };
 
   return (
-    <WhiteWrapper>
+    <>
       <h1 className="title">WordCloud</h1>
       <a className="subtitle" href="https://github.com/g-uberman" target="blank">by Grzegorz Uberman</a>
       <TextField
@@ -42,6 +41,6 @@ export const LandingScreen = () => {
       >
         Play
       </Button>
-    </WhiteWrapper>
+    </>
   );
 };

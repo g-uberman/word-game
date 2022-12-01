@@ -1,6 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { ScreenWrapper } from "./Styles/GameScreen.styles";
-import { WhiteWrapper } from "./Styles/Shared.styles";
+import { GameField } from "./Styles/GameScreen.styles";
 import { Button } from "@mui/material";
 import { Context } from "./../ContextProvider";
 import { WordSet, animals, colors, vehicles } from "../data";
@@ -37,7 +36,7 @@ export const GameScreen = () => {
     chosenSet.good_words.forEach((word) => {
       if (!selectedWords.includes(word)) {
         currentSum -= 1;
-        markIncorrect(word);
+        markUnselected(word);
       }
     });
     setPoints(currentSum);
@@ -51,6 +50,11 @@ export const GameScreen = () => {
   const markIncorrect = (word: string) => {
     let i = chosenSet.all_words.indexOf(word);
     document.getElementById(`label${i}`)?.classList.add("incorrect");
+  };
+
+  const markUnselected = (word: string) => {
+    let i = chosenSet.all_words.indexOf(word);
+    document.getElementById(`label${i}`)?.classList.add("unselected");
   };
 
   // BUTTON EFFECTS:
@@ -80,6 +84,8 @@ export const GameScreen = () => {
   // RANDOMISER:
 
   const chooseSet = () => {
+    
+    // Shuffle chosen set
     function shuffle(set: WordSet) {
       let currentIndex = set.all_words.length,
         randomIndex;
@@ -97,6 +103,7 @@ export const GameScreen = () => {
       return set;
     }
 
+    // Choose random set
     const choice = Math.ceil(Math.random() * 3);
     switch (choice) {
       case 1:
@@ -117,9 +124,9 @@ export const GameScreen = () => {
   // COMPONENT:
 
   return (
-    <WhiteWrapper>
+    <>
       <h1>{chosenSet.question}:</h1>
-      <ScreenWrapper>
+      <GameField>
         {chosenSet.all_words.map((element, index) => (
           <div key={index}>
             <input
@@ -134,7 +141,7 @@ export const GameScreen = () => {
             </label>
           </div>
         ))}
-      </ScreenWrapper>
+      </GameField>
       {!gameover && (
         <Button
           variant="contained"
@@ -156,6 +163,6 @@ export const GameScreen = () => {
           Finish game
         </Button>
       )}
-    </WhiteWrapper>
+    </>
   );
 };

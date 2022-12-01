@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ScreenWrapper = styled.div`
+export const GameField = styled.div`
   width: 95%;
   max-width: 500px;
   min-height: 500px;
@@ -35,6 +35,10 @@ export const ScreenWrapper = styled.div`
     color: #000;
   }
 
+  input:checked + label.correct {
+    color: #2ab72a;
+  }
+
   .correct::after {
     content: "correct";
     position: absolute;
@@ -42,7 +46,11 @@ export const ScreenWrapper = styled.div`
     right: 0;
     left: 0;
     font-size: 0.7em;
-    color: #32cd32;
+    color: #2ab72a;
+  }
+
+  input:checked + label.incorrect {
+    color: #e35e4c;
   }
 
   .incorrect::after {
@@ -52,7 +60,17 @@ export const ScreenWrapper = styled.div`
     right: 0;
     left: 0;
     font-size: 0.7em;
-    color: #e01e1e;
+    color: #e35e4c;
+  }
+
+  .unselected::after {
+    content: "incorrect";
+    position: absolute;
+    top: -0.7em;
+    right: 0;
+    left: 0;
+    font-size: 0.7em;
+    color: #e35e4c;
   }
 
   @media screen and (min-width: 800px) {

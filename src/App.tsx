@@ -3,7 +3,7 @@ import { LandingScreen } from "./Components/LandingScreen";
 import { GameScreen } from "./Components/GameScreen";
 import { ResultScreen } from "./Components/ResultScreen";
 import { Footer } from "./Components/Footer";
-import { ScreenWrapper, MainSection } from "./Components/Styles/App.styles";
+import { ScreenWrapper, MainSection, WhiteWrapper } from "./Components/Styles/App.styles";
 import { Context } from "./ContextProvider";
 
 function App() {
@@ -12,9 +12,11 @@ function App() {
   return (
     <ScreenWrapper>
       <MainSection>
+        <WhiteWrapper>
         {view === "landing" && <LandingScreen />}
         {view === "game" && <GameScreen />}
         {view === "result" && <ResultScreen />}
+        </WhiteWrapper>
       </MainSection>
       <Footer />
     </ScreenWrapper>

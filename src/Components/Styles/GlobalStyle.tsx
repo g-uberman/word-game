@@ -41,4 +41,17 @@ h1 {
     text-decoration: none;
     margin-bottom: 1em;
 }
+
+a, a:visited {
+    color: #000;
+}
+
+.points {
+    margin-top: -0.4em;
+    color: #2ab72a;
+}
+
+.negative {
+    color: #e35e4c;
+}
 `;
